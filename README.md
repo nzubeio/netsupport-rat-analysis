@@ -118,3 +118,8 @@ Based on the findings of this investigation, the following remediation actions a
 7. **Continue monitoring outbound HTTP and HTTPS traffic** for unusual connections to unknown external hosts and implement detection rules based on the identified network indicators.
 
 **Finding:** Rapid isolation of the infected host, blocking the identified C2 infrastructure, and enterprise-wide IOC hunting would significantly reduce the likelihood of continued malware activity and prevent further compromise.
+
+
+## Conclusion
+
+This investigation successfully identified the compromised workstation (**10.2.28.88**), confirmed communication with the NetSupport Manager RAT command-and-control server (**45.131.214.85**), documented key indicators of compromise, and reconstructed the malware's network activity using Wireshark. The findings demonstrate how packet capture analysis can be used to detect remote access trojans, identify malicious infrastructure, and support incident response through evidence-based analysis and remediation recommendations.
