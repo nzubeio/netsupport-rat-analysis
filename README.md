@@ -33,7 +33,7 @@ At this stage of the investigation, the HTTPS communication alone was not suffic
 **Finding:** Internal host **10.2.28.88** was identified as the primary system of interest and selected for deeper investigation.
 
 
-![Victim Identification](image.png)
+![Victim Identification](victim-identification.png)
 
 
 *Figure 1. Initial traffic analysis showing the internal host (10.2.28.88) communicating with the external IP address (13.89.179.9) over TCP port 443. At this stage, encrypted HTTPS traffic alone was not sufficient to confirm compromise but identified the primary system requiring further investigation.*
