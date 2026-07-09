@@ -94,3 +94,27 @@ The packet capture revealed a sequence of events consistent with a NetSupport Ma
 
 
 *Figure 4. Timeline of network activity showing the initial outbound connection followed by persistent HTTP POST requests between the infected workstation (10.2.28.88) and the NetSupport Manager command-and-control server.*
+
+
+## Remediation Recommendations
+
+Based on the findings of this investigation, the following remediation actions are recommended to contain the infection and reduce the risk of future compromise:
+
+1. **Immediately isolate the infected workstation (10.2.28.88)** from the network to prevent further communication with the command-and-control (C2) server.
+
+2. **Block the malicious IP address (45.131.214.85)** at the firewall, proxy, and intrusion prevention systems to prevent outbound connections.
+
+3. **Perform a full malware scan** using an updated endpoint detection and response (EDR) or antivirus solution to remove the NetSupport Manager RAT and identify any additional malicious artifacts.
+
+4. **Reset user credentials** associated with the compromised workstation, as remote access malware may have exposed authentication information.
+
+5. **Search the enterprise environment** for the identified indicators of compromise (IOCs), including:
+   - IP address: `45.131.214.85`
+   - URI: `/fakeurl.htm`
+   - User-Agent: `NetSupport Manager/1.3`
+
+6. **Review firewall, proxy, and endpoint logs** for other systems communicating with the identified C2 infrastructure to determine whether additional hosts have been compromised.
+
+7. **Continue monitoring outbound HTTP and HTTPS traffic** for unusual connections to unknown external hosts and implement detection rules based on the identified network indicators.
+
+**Finding:** Rapid isolation of the infected host, blocking the identified C2 infrastructure, and enterprise-wide IOC hunting would significantly reduce the likelihood of continued malware activity and prevent further compromise.
