@@ -52,3 +52,25 @@ Unlike the initial HTTPS traffic observed during victim identification, this com
 
 
 *Figure 2. HTTP POST requests from the infected workstation (10.2.28.88) to the external IP address (45.131.214.85), including the `/fakeurl.htm` endpoint and NetSupport Manager User-Agent, confirming communication with the malware's command-and-control (C2) server.*
+
+
+## Indicators of Compromise (IOCs)
+
+The investigation identified the following indicators of compromise associated with the NetSupport Manager RAT infection.
+
+| Indicator Type | Value | Description |
+|---------------|-------|-------------|
+| Victim Host | 10.2.28.88 | Compromised internal workstation |
+| Primary C2 IP | 45.131.214.85 | Command-and-control (C2) server |
+| HTTP URI | http://45.131.214.85/fakeurl.htm | HTTP endpoint used by the malware |
+| User-Agent | NetSupport Manager/1.3 | Malware HTTP User-Agent string |
+| Protocols | HTTP, HTTPS (TLS 1.2) | Network communication protocols |
+| TCP Ports | 80, 443 | Communication ports observed |
+
+**Finding:** These network artifacts confirmed that the infected workstation maintained communication with the NetSupport Manager RAT command-and-control infrastructure.
+
+
+![Indicators of Compromise](ioc-analysis.png)
+
+
+*Figure 3. Wireshark Conversations view highlighting the infected host (10.2.28.88) communicating with multiple external IP addresses, including the primary command-and-control server (45.131.214.85).*
