@@ -74,3 +74,23 @@ The investigation identified the following indicators of compromise associated w
 
 
 *Figure 3. Wireshark Conversations view highlighting the infected host (10.2.28.88) communicating with multiple external IP addresses, including the primary command-and-control server (45.131.214.85).*
+
+
+## Attack Timeline
+
+The packet capture revealed a sequence of events consistent with a NetSupport Manager RAT infection. Analysis of network traffic established the progression from initial outbound communication to sustained command-and-control activity.
+
+| Time | Activity | Evidence |
+|------|----------|----------|
+| 00:00:03 | Victim host (10.2.28.88) initiated outbound HTTP request to `connecttest.txt` | Normal Windows connectivity check |
+| 00:00:40 | First outbound connection to 45.131.214.85 | Initial communication with suspected C2 server |
+| 00:01:54 | HTTP POST request to `/fakeurl.htm` | Malware beacon establishing C2 communications |
+| 00:00:45–00:12:17 | Repeated HTTP POST requests with NetSupport Manager User-Agent | Continuous command-and-control activity |
+
+**Finding:** The timeline demonstrated an initial outbound connection followed by repeated HTTP POST requests to the remote infrastructure, confirming persistent communication between the infected workstation and the command-and-control server.
+
+
+![Attack Timeline](attack-timeline.png)
+
+
+*Figure 4. Timeline of network activity showing the initial outbound connection followed by persistent HTTP POST requests between the infected workstation (10.2.28.88) and the NetSupport Manager command-and-control server.*
