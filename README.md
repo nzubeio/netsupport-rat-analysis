@@ -38,3 +38,17 @@ At this stage of the investigation, the HTTPS communication alone was not suffic
 
 *Figure 1. Initial traffic analysis showing the internal host (10.2.28.88) communicating with the external IP address (13.89.179.9) over TCP port 443. At this stage, encrypted HTTPS traffic alone was not sufficient to confirm compromise but identified the primary system requiring further investigation.*
   
+
+## Command-and-Control (C2) Traffic Analysis
+
+After identifying the suspicious internal host, the investigation focused on determining the remote system acting as the malware's command-and-control (C2) server. Inspection of the outbound connections revealed repeated communication between the victim host **10.2.28.88** and the external IP address **45.131.214.85**.
+
+Unlike the initial HTTPS traffic observed during victim identification, this communication was consistent throughout the packet capture and matched the behaviour expected of a remote access trojan maintaining contact with its operator. The repeated network sessions indicated that **45.131.214.85** was functioning as the primary C2 infrastructure used by the malware. 
+
+**Finding:** External IP address **45.131.214.85** was identified as the primary command-and-control (C2) server communicating with the infected host.
+
+
+![Command and Control Traffic](c2-analysis.png)
+
+
+*Figure 2. HTTP POST requests from the infected workstation (10.2.28.88) to the external IP address (45.131.214.85), including the `/fakeurl.htm` endpoint and NetSupport Manager User-Agent, confirming communication with the malware's command-and-control (C2) server.*
